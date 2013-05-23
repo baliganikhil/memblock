@@ -15,6 +15,7 @@
 	<div class="well row">
 		<div class="span4">
 			<button class="start_game btn btn-primary">Start Game</button> 
+			<button class="btn btn-inverse btn_hint" disabled="disabled">Hint</button>
 		</div>
 
 		<div class="span2 toolbar_label">
@@ -140,8 +141,16 @@ var encap = function() {
 	function animate_active_cells() {
 		show_active_tiles();
 		setTimeout(hide_active_tiles, time_hide_cells);
+		
 		display_scores();
+		$('.btn_hint').removeAttr('disabled');
 	}
+
+	$('.btn_hint').on('click', function() {
+		animate_active_cells();
+		correct_answers = 0;
+		$(this).attr('disabled', 'disabled');
+	});
 
 	$('.area').on('click', '.each_cell', function() {
 		if (game_over) {return};
