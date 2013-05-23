@@ -162,7 +162,7 @@ $('.area').on('click', '.each_cell', function() {
 			alert("Game Over!");
 		}
 
-	} else {
+	} else if (!$(this).hasClass('active_cell')) {
 		$(this).addClass('active_cell');
 		correct_answers++;
 
